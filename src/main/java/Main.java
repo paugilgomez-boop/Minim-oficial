@@ -4,7 +4,7 @@ import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.grizzly.http.server.StaticHttpHandler;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
-import services.ProductService;
+import services.MathManagerService;
 
 import java.io.IOException;
 import java.net.URI;
@@ -15,7 +15,7 @@ public class Main {
 
     public static HttpServer startServer() {
         final ResourceConfig rc = new ResourceConfig()
-                .register(ProductService.class)
+                .register(MathManagerService.class)
                 .register(MyExceptionMapper.class)
                 .register(io.swagger.jaxrs.listing.ApiListingResource.class)
                 .register(io.swagger.jaxrs.listing.SwaggerSerializers.class);
@@ -23,10 +23,10 @@ public class Main {
         BeanConfig beanConfig = new BeanConfig();
         beanConfig.setHost("localhost:8080");
         beanConfig.setBasePath("/dsaApp");
-        beanConfig.setResourcePackage(ProductService.class.getPackage() == null ? "" : ProductService.class.getPackage().getName());
+        beanConfig.setResourcePackage(MathManagerService.class.getPackage() == null ? "" : MathManagerService.class.getPackage().getName());
         beanConfig.setTitle("Minim REST API");
         beanConfig.setVersion("1.0.0");
-        beanConfig.setDescription("REST API for Product Manager");
+        beanConfig.setDescription("REST API for Math Manager");
         beanConfig.setScan(true);
 
         return GrizzlyHttpServerFactory.createHttpServer(URI.create(BASE_URI), rc);
