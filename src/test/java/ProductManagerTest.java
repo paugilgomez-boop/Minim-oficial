@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import repositories.ProductManager;
 import repositories.ProductManagerImpl;
-
+// Starts minim1 dsa
 import java.util.List;
 
 public class ProductManagerTest {
